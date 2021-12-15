@@ -1,58 +1,66 @@
-int startX = 250;
-int startY = 0;
-int endX = 0;
-int endY = 150;
-int sweight = 5;
-int transp = 100;
-int decision = 0;
-//0 = draw lightning bolt, 1 = draw fade/cover
-int fade = 100;
-int recth = 20;
-
 void setup() {
-	size(500, 500);
-	background(0);
-	//frameRate(200);
+  size(500, 500);
+  background(255);
 }
 
 void draw() {
-	decision = (Math.random() + 0.02);
+  noStroke();
+  
+  fill(0,255,0);
+  rect(0,0,100,50);
+  fill(0);
+  textSize(20);
+  text(mouseX, 10,30);
+  text(",", 42,30);
+  text(mouseY, 50,30); // mouseX and mouseY display/box
+  
+  int remainderX = 0;
+  int remainderY = 0;
+ 
+  if (mousePressed == true) { //code for detecting/filling boxes
+    int boxX = mouseX;
+    int boxY = mouseY;
+    remainderX = mouseX % 50; 
+    System.out.println("RemainderX = " + remainderX);
+    remainderY = mouseY % 50;
+    System.out.println("Remainder Y = " + remainderY);
+    if (remainderX > 35) {
+      while(boxX % 50 != 0) 
+        boxX++;
+      System.out.println("BoxX is " + boxX);
+    } else {
+      while(boxX % 50 != 0) 
+        boxX--;
+      System.out.println("BoxX is " + boxX);
+    }
 
-	if (decision >= 1) {
+    if (remainderY > 35) {
+      while(boxY % 50 != 0) 
+        boxY++;
+      System.out.println("BoxY is " + boxY);
+    } else {
+      while(boxY % 50 != 0) 
+        boxY--;
+      System.out.println("BoxY is " + boxY);
+    }
 
-		while (endY < 500) {
+    fill(255, 0, 0);
+    rect(boxX, boxY, 50, 50);
+  }
+}
 
-			endX = startX + (int)(Math.random() * 19) - 9;
-			endY = startY + (int)(Math.random() * 10);
-			sweight -= 0.035;
-			transp -= 1;
-			strokeWeight(sweight);
-			stroke(250, 250, 20, transp);
-			line(startX, startY, endX, endY);
-			startX = endX;
-			startY = endY;
-		}
-	}
+void keyPressed() { //rebuild board when mouse clicked
+  background(255); 
+  fill(0);
 
-	startX = 250;
-	startY = 0;
-	endX = 0;
-	endY = 150;
-	sweight = 5;
-	transp = 100;
-	decision = 0;
-
-
-	fade -= 2;
-	recth += 15;
-	noStroke();
-	fill(0, 0, 0, fade);
-	rect(0, 0, 500, recth);
-	if (recth >= 475) {
-		decision = 0;
-		fade = 100;
-		recth = 20;
-
-	}
-
+  for (int a = 0; a < 500; a +=100) {
+    for (int i = 0; i < 500; i+=100) {
+      rect(i, a, 50, 50);
+    }
+  }
+  for (int a = 50; a < 500; a +=100) {
+    for (int i = 50; i < 500; i+=100) {
+      rect(i, a, 50, 50);
+    }
+  }
 }
