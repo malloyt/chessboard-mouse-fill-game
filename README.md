@@ -1,1 +1,1 @@
-# first-animation
+# rookie-coding-session
