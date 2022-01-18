@@ -21,27 +21,21 @@ void draw() {
     int boxX = mouseX;
     int boxY = mouseY;
     remainderX = mouseX % 50;
-    System.out.println("RemainderX = " + remainderX);
     remainderY = mouseY % 50;
-    System.out.println("Remainder Y = " + remainderY);
     if (remainderX > 35) {
       while (boxX % 50 != 0)
         boxX++;
-      System.out.println("BoxX is " + boxX);
     } else {
       while (boxX % 50 != 0)
         boxX--;
-      System.out.println("BoxX is " + boxX);
     }
 
     if (remainderY > 35) {
       while (boxY % 50 != 0)
         boxY++;
-      System.out.println("BoxY is " + boxY);
     } else {
       while (boxY % 50 != 0)
         boxY--;
-      System.out.println("BoxY is " + boxY);
     }
 
     fill(255, 0, 0);
