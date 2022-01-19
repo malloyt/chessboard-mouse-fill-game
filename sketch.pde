@@ -1,6 +1,21 @@
 void setup() {
   size(500, 500);
   background(255);
+  
+      fill(0);
+
+      for (int a = 0; a < 500; a +=100) {
+        for (int i = 0; i < 500; i+=100) {
+          rect(i, a, 50, 50);
+        }
+      }
+      for (int a = 50; a < 500; a +=100) {
+        for (int i = 50; i < 500; i+=100) {
+          rect(i, a, 50, 50);
+        }
+      }
+  
+  
 }
 
 void draw() {
@@ -43,7 +58,7 @@ void draw() {
   }
 }
 
-void keyPressed() { //rebuild board when mouse clicked
+void keyPressed() { //rebuild board when key pressed
   if (key == CODED) {
     if (keyCode == UP) {
 
